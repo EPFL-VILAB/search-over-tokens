@@ -1,0 +1,31 @@
+# @package _global_
+
+# GenEval Beam Search with Ensemble Verifier (rank-based)
+#
+# Uses beam search on GenEval with an ensemble of 8 reward models:
+#   CLIP, ImageReward, Aesthetic, CycleReward, HPSv2, PickScore,
+#   Likelihood (AR log-probs), Spatial (GroundingDINO + SAM)
+#
+# All model weights are downloaded from the internet.
+#
+#
+# Usage:
+#   Single GPU:  python scripts/run_search.py --config-name eval/geneval_flextok_beam_ensemble
+#   Multi-GPU:   torchrun --nproc-per-node=4 scripts/run_search.py --config-name eval/geneval_flextok_beam_ensemble
+
+defaults:
+  - /eval/base
+  - /components/ar_priors/flextok/flextok_ar_3b
+  - /components/search_algorithms/beam_search
+  - /components/verifiers/ensemble
+
+# Search overrides
+search:
+  name: beam
+
+# Dataset configuration
+dataset:
+  name: geneval
+  dataset_dir: datasets/geneval
+
+# Runtime settings

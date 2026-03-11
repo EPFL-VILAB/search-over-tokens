@@ -1,0 +1,26 @@
+# @package _global_
+
+# GenEval Janus Best-of-50 with ImageReward Verifier
+#
+# Generates 50 complete sequences (576 tokens each) per prompt,
+# scores with ImageReward, and returns the best.
+#
+#
+# Usage:
+#   python scripts/run_search.py --config-name eval/geneval_janus_bon50_ir
+
+defaults:
+  - /eval/base
+  - /components/ar_priors/janus/janus
+  - /components/search_algorithms/best_of_n
+  - /components/verifiers/image_reward
+
+# Best-of-N override
+search:
+  name: best_of_n
+  n_samples: 50
+
+# Dataset configuration
+dataset:
+  name: geneval
+  dataset_dir: datasets/geneval

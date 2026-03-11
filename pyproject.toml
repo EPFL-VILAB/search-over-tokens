@@ -1,0 +1,86 @@
+[build-system]
+requires = ["setuptools>=61", "packaging>=24.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sot"
+version = "0.1.0"
+description = "(1D) Ordered Tokens Enable Efficient Test-Time Search"
+requires-python = ">=3.10"
+readme = {file = "README.md", content-type = "text/markdown"}
+license = {file = "sot/LICENSE"}
+dependencies = [
+    # ── PyTorch ────────────────────────────────────────────────────────────
+    "torch>=2.5.0",
+    "torchvision>=0.20.0",
+
+    # ── Core utilities ──────────────────────────────────────────────────────
+    "numpy",
+    "pillow",
+    "hydra-core",
+    "omegaconf",
+    "setuptools",       # required for building CLIP from source
+    "safetensors",
+
+    # ── HuggingFace ecosystem ──────────────────────────────────────────────
+    # transformers<4.56: >=4.56 moved APIs that image-reward imports from modeling_utils
+    "huggingface_hub>=0.21.0",
+    "transformers>=4.38.0,<4.56",
+    "diffusers>=0.25.0",
+    "accelerate>=0.16.0",
+    "datasets>=2.11.0",
+    "sentencepiece>=0.1.99",
+
+    # ── Shared model utilities ─────────────────────────────────────────────
+    # timm>=0.9.9: adds AttentionPoolLatent required by Janus (siglip_vit.py)
+    "timm>=0.9.9",
+    "einops>=0.7.0",
+    "fairscale==0.4.13",
+    "fvcore>=0.1.5",
+
+    # ── Verifier dependencies ─────────────────────────────────────────────
+    "clip @ git+https://github.com/openai/CLIP.git",
+    "imscore",          # HPSv2 + CycleReward verifiers
+    "dreamsim",         # DreamSim verifier
+    "gdown",            # DreamSim checkpoint download
+    "open_clip_torch",  # Spatial verifier (GroundingDINO + SAM)
+    "clip_benchmark",   # Spatial verifier
+    "opencv-python",    # Spatial verifier
+
+    # ── Infinity AR prior ──────────────────────────────────────────────────
+    "kornia",
+    "imageio",
+
+    # ── AR Models ──────────────────────────────────────────────────────────
+    "flextok @ git+https://github.com/apple/ml-flextok.git",
+    "l3m @ git+https://github.com/apple/ml-l3m.git",
+    "janus @ git+https://github.com/deepseek-ai/Janus.git",
+]
+
+[project.optional-dependencies]
+
+
+demo = [
+    "gradio>=4.0.0",
+    "spaces",
+    "matplotlib>=3.7.0",
+]
+
+[project.urls]
+"Homepage" = "https://sot.epfl.ch"
+
+[tool.setuptools.packages.find]
+where = ["sot", "flextok_ar"]
+include = ["sot*", "data*", "utils*", "flextok_ar*"]
+
+[tool.setuptools.package-dir]
+"sot" = "sot/sot"
+"data" = "sot/data"
+"sot.utils" = "sot/utils"
+"flextok_ar" = "flextok_ar"
+
+[tool.setuptools]
+py-modules = []
+
+[project.scripts]
+flextok-ar-generate = "flextok_ar.generate:main"

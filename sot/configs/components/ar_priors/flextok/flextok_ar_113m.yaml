@@ -1,0 +1,18 @@
+# FlexTok AR d12 model for Text-to-Image generation
+# Smaller model: 12 blocks, embed_dim=768
+
+ar_prior:
+  name: flextok_ar_113m
+  model_id: ZhitongGao/FlexAR-113M-T2I
+  model_type: ar_text_to_image_model
+  
+  generation_kwargs:
+    replacement: false
+    return_probs: true
+
+  decode_kwargs:
+    timesteps: 20
+    guidance_scale: 7.5
+    perform_norm_guidance: true
+    use_same_noise_per_prompt: true
+

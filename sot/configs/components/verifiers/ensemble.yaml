@@ -1,0 +1,33 @@
+# Ensemble verifier — combines multiple reward models
+#
+# Aggregation strategies:
+#   - rank (default): Sum of per-verifier ranks; best combined rank wins.
+#   - weighted: Weighted sum of min-max normalised scores.
+#
+# Add or remove sub-verifiers below and adjust weights as needed.
+# A weight of 0 disables a verifier without removing it.
+
+verifier:
+  name: ensemble
+  aggregation: rank          # "rank" or "weighted"
+  batch_size: 32
+  verifiers:
+    - name: clip
+      weight: 1.0
+    - name: image_reward
+      weight: 1.0
+    - name: aesthetic
+      weight: 1.0
+      # checkpoint_path auto-downloads from internet if omitted
+    - name: cyclereward
+      weight: 1.0
+    - name: hpsv2
+      weight: 1.0
+    - name: pickscore
+      weight: 1.0
+    - name: likelihood
+      weight: 1.0
+    - name: grounded_sam
+      weight: 1.0
+      part_by_part: true
+      spatial_metric: "pse"

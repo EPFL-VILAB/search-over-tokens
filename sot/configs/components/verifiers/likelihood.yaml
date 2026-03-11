@@ -1,0 +1,8 @@
+# Likelihood (log-probability) verifier
+#
+# Uses the AR model's sequence log-probabilities as a score.
+# No additional model is loaded — the search algorithm passes log_probs.
+
+verifier:
+  name: likelihood
+

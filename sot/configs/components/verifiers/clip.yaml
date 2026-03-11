@@ -1,0 +1,9 @@
+# CLIP verifier for image-text alignment
+# Uses OpenAI's CLIP model
+
+verifier:
+  name: clip
+  model_name: "ViT-B/16"  # CLIP model variant
+  # Options: "RN50", "RN101", "RN50x4", "RN50x16", "RN50x64",
+  #          "ViT-B/32", "ViT-B/16", "ViT-L/14", "ViT-L/14@336px"
+

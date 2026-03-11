@@ -1,0 +1,18 @@
+# Spatial verifier — GroundingDINO + SAM + CLIP
+#
+# Evaluates compositional correctness: object counting, colour attribution,
+# and spatial relations.  All models downloaded from HuggingFace Hub.
+#
+# Requirements:
+#   pip install transformers>=4.38 open_clip_torch clip_benchmark
+
+verifier:
+  name: grounded_sam
+  grounding_dino_model: "IDEA-Research/grounding-dino-tiny"
+  sam_model: "facebook/sam-vit-huge"
+  box_threshold: 0.35
+  text_threshold: 0.25
+  part_by_part: true
+  spatial_metric: "pse"   # "pse" or "geneval"
+  batch_size: 4
+

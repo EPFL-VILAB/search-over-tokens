@@ -1,0 +1,18 @@
+# FlexTok AR d26 model for Text-to-Image generation
+# Large model: 26 blocks, embed_dim=1664
+
+ar_prior:
+  name: flextok_ar_1b
+  model_id: ZhitongGao/FlexAR-1B-T2I
+  model_type: ar_text_to_image_model
+  
+  generation_kwargs:
+    replacement: false
+    return_probs: true
+
+  decode_kwargs:
+    timesteps: 20
+    guidance_scale: 7.5
+    perform_norm_guidance: true
+    use_same_noise_per_prompt: true
+
