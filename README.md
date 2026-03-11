@@ -1,5 +1,5 @@
 # 🧩 Search over Tokens (`SoT`)
-[`Website`](https://sot.epfl.ch) | [`arXiv`](#) | [`🤗 Demo`](https://huggingface.co/spaces/EPFL-VILAB/search-over-tokens) | [`BibTeX`](#citation)
+[`Website`](https://sot.epfl.ch) | `arXiv` (coming soo) | `🤗 Demo` (coming soo) | [`BibTeX`](#citation)
 
 `SoT` is a framework for **test-time search in autoregressive (AR) image generation**, decoupling [AR priors](#ar-priors), [search algorithms](#search-algorithms), and [verifiers](#verifiers) for flexible composition via simple YAML configs.
 
