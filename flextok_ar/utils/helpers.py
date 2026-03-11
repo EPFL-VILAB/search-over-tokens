@@ -150,7 +150,7 @@ def load_model(
     """Load FlexTok AR model from HuggingFace Hub or local directory.
 
     Args:
-        model_id: HuggingFace model ID (e.g., "ZhitongGao/FlexAR-3B-T2I") or
+        model_id: HuggingFace model ID (e.g., "EPFL-VILAB/FlexAR-3B-T2I") or
                  local directory path containing model files. If a local path is provided,
                  it should contain `model.safetensors` and `config.yaml`.
         device: Device to load model on.

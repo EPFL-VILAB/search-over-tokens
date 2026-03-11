@@ -4,13 +4,13 @@
 Usage (from flextok_ar/ directory with `pip install -e ..`):
 
   # Text-to-Image: generate from text prompt
-  python generate.py --mode t2i --model-id ZhitongGao/FlexAR-3B-T2I --prompt "A serene lake at sunset" --output lake.png
+  python generate.py --mode t2i --model-id EPFL-VILAB/FlexAR-3B-T2I --prompt "A serene lake at sunset" --output lake.png
 
   # Class-to-Image: generate from ImageNet class label (0-999)
-  python generate.py --mode c2i --model-id ZhitongGao/FlexAR-1B-C2I --class-label 285 --output cat.png
+  python generate.py --mode c2i --model-id EPFL-VILAB/FlexAR-1B-C2I --class-label 285 --output cat.png
 
   # Multiple samples
-  python generate.py --mode t2i --model-id ZhitongGao/FlexAR-3B-T2I --prompt "A cat" --num-samples 4 --output cat_{i}.png
+  python generate.py --mode t2i --model-id EPFL-VILAB/FlexAR-3B-T2I --prompt "A cat" --num-samples 4 --output cat_{i}.png
 """
 
 import argparse
@@ -32,7 +32,7 @@ def main():
     parser.add_argument("--mode", choices=["t2i", "c2i"], required=True,
                         help="t2i = text-to-image, c2i = class-to-image")
     parser.add_argument("--model-id", type=str, required=True,
-                        help="HuggingFace model ID (e.g., ZhitongGao/FlexAR-3B-T2I or ZhitongGao/FlexAR-1B-C2I)")
+                        help="HuggingFace model ID (e.g., EPFL-VILAB/FlexAR-3B-T2I or EPFL-VILAB/FlexAR-1B-C2I)")
     parser.add_argument("--output", type=str, required=True,
                         help="Output path (use {i} for multiple samples, e.g., out_{i}.png)")
 

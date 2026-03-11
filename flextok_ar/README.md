@@ -46,13 +46,13 @@ See the [main README](../README.md#installation) for the full SoT installation.
 ```bash
 # Text-to-image: basic usage
 python generate.py --mode t2i \
-    --model-id ZhitongGao/FlexAR-3B-T2I \
+    --model-id EPFL-VILAB/FlexAR-3B-T2I \
     --prompt "A serene lake at sunset with mountains" \
     --output lake.png
 
 # Class-to-image (ImageNet class)
 python generate.py --mode c2i \
-    --model-id ZhitongGao/FlexAR-1B-C2I \
+    --model-id EPFL-VILAB/FlexAR-1B-C2I \
     --class-label 285 \
     --output cat.png
 ```
@@ -83,7 +83,7 @@ from flextok_ar.utils.helpers import load_model
 
 # Load a FlexTok AR model from HuggingFace Hub
 model, tokenizer, cfg = load_model(
-    model_id="ZhitongGao/FlexAR-3B-T2I",
+    model_id="EPFL-VILAB/FlexAR-3B-T2I",
     device="cuda"
 )
 
@@ -117,11 +117,11 @@ FlexTok AR checkpoints are hosted on HuggingFace.
 
 | Model | Resolution | Tokens | Params | HuggingFace |
 |-------|-----------|--------|--------|-------------|
-| FlexAR-113M | 256×256 | 256 | 113M | [`ZhitongGao/FlexAR-113M-T2I`](https://huggingface.co/ZhitongGao/FlexAR-113M-T2I) |
-| FlexAR-382M | 256×256 | 256 | 382M | [`ZhitongGao/FlexAR-382M-T2I`](https://huggingface.co/ZhitongGao/FlexAR-382M-T2I) |
-| FlexAR-1B | 256×256 | 256 | 1.15B | [`ZhitongGao/FlexAR-1B-T2I`](https://huggingface.co/ZhitongGao/FlexAR-1B-T2I) |
-| FlexAR-3B | 256×256 | 256 | 3.06B | [`ZhitongGao/FlexAR-3B-T2I`](https://huggingface.co/ZhitongGao/FlexAR-3B-T2I) |
-| GridAR-3B | 256×256 | 256 | 3.06B | [`ZhitongGao/GridAR-3B-T2I`](https://huggingface.co/ZhitongGao/GridAR-3B-T2I) |
+| FlexAR-113M | 256×256 | 256 | 113M | [`EPFL-VILAB/FlexAR-113M-T2I`](https://huggingface.co/EPFL-VILAB/FlexAR-113M-T2I) |
+| FlexAR-382M | 256×256 | 256 | 382M | [`EPFL-VILAB/FlexAR-382M-T2I`](https://huggingface.co/EPFL-VILAB/FlexAR-382M-T2I) |
+| FlexAR-1B | 256×256 | 256 | 1.15B | [`EPFL-VILAB/FlexAR-1B-T2I`](https://huggingface.co/EPFL-VILAB/FlexAR-1B-T2I) |
+| FlexAR-3B | 256×256 | 256 | 3.06B | [`EPFL-VILAB/FlexAR-3B-T2I`](https://huggingface.co/EPFL-VILAB/FlexAR-3B-T2I) |
+| GridAR-3B | 256×256 | 256 | 3.06B | [`EPFL-VILAB/GridAR-3B-T2I`](https://huggingface.co/EPFL-VILAB/GridAR-3B-T2I) |
 
 All T2I models use 256 FlexTok tokens at 256×256 resolution. Larger models produce higher quality images; FlexAR-113M is fastest for experimentation and ablations.
 
@@ -129,7 +129,7 @@ All T2I models use 256 FlexTok tokens at 256×256 resolution. Larger models prod
 
 | Model | Resolution | Tokens | Params | HuggingFace |
 |-------|-----------|--------|--------|-------------|
-| FlexAR-1B | 256×256 | 256 | 1.15B | [`ZhitongGao/FlexAR-1B-C2I`](https://huggingface.co/ZhitongGao/FlexAR-1B-C2I) |
+| FlexAR-1B | 256×256 | 256 | 1.15B | [`EPFL-VILAB/FlexAR-1B-C2I`](https://huggingface.co/EPFL-VILAB/FlexAR-1B-C2I) |
 
 The C2I model generates images conditioned on ImageNet class labels (0–999). Use `--cfg-factor 1.5` (default) for class-to-image generation.
 

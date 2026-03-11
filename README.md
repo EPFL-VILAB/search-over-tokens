@@ -75,7 +75,7 @@ from sot.search_algorithms.base import SearchAlgorithmFactory
 from sot.verifiers.base import VerifierFactory
 
 # 1. Define AR model, verifier, and search algorithm
-ar_prior = ARPriorFactory.create("flextok_ar_3b", device="cuda")  # auto-loads ZhitongGao/FlexAR-3B-T2I
+ar_prior = ARPriorFactory.create("flextok_ar_3b", device="cuda")  # auto-loads EPFL-VILAB/FlexAR-3B-T2I
 
 verifier = VerifierFactory.create("image_reward", device="cuda")
 

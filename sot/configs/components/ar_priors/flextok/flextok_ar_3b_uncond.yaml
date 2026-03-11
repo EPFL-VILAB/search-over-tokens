@@ -9,7 +9,7 @@
 
 ar_prior:
   name: flextok_ar_3b
-  model_id: ZhitongGao/FlexAR-3B-T2I
+  model_id: EPFL-VILAB/FlexAR-3B-T2I
 
   # --- Unconditional generation ---
   use_uncond_gen: true

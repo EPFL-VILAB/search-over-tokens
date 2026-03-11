@@ -10,11 +10,11 @@ For **standalone use** (image generation without the full SoT framework), see [`
 
 | Config Name | Model | Params | HuggingFace | Token Type | Config | Wrapper |
 |-------------|-------|--------|-------------|------------|--------|---------|
-| `flextok_ar_113m` | FlexAR-113M | 113M | [`ZhitongGao/FlexAR-113M-T2I`](https://huggingface.co/ZhitongGao/FlexAR-113M-T2I) | 1D ordered (256 tokens) | [`flextok_ar_113m.yaml`](../sot/configs/components/ar_priors/flextok/flextok_ar_113m.yaml) | [`flextok_wrapper.py`](../sot/sot/ar_priors/flextok_wrapper.py) |
-| `flextok_ar_382m` | FlexAR-382M | 382M | [`ZhitongGao/FlexAR-382M-T2I`](https://huggingface.co/ZhitongGao/FlexAR-382M-T2I) | 1D ordered (256 tokens) | [`flextok_ar_382m.yaml`](../sot/configs/components/ar_priors/flextok/flextok_ar_382m.yaml) | [`flextok_wrapper.py`](../sot/sot/ar_priors/flextok_wrapper.py) |
-| `flextok_ar_1b` | FlexAR-1B | 1.15B | [`ZhitongGao/FlexAR-1B-T2I`](https://huggingface.co/ZhitongGao/FlexAR-1B-T2I) | 1D ordered (256 tokens) | [`flextok_ar_1b.yaml`](../sot/configs/components/ar_priors/flextok/flextok_ar_1b.yaml) | [`flextok_wrapper.py`](../sot/sot/ar_priors/flextok_wrapper.py) |
-| `flextok_ar_3b` | FlexAR-3B | 3.06B | [`ZhitongGao/FlexAR-3B-T2I`](https://huggingface.co/ZhitongGao/FlexAR-3B-T2I) | 1D ordered (256 tokens) | [`flextok_ar_3b.yaml`](../sot/configs/components/ar_priors/flextok/flextok_ar_3b.yaml) | [`flextok_wrapper.py`](../sot/sot/ar_priors/flextok_wrapper.py) |
-| `flextok_ar_3b` (uncond) | FlexAR-3B | 3.06B | [`ZhitongGao/FlexAR-3B-T2I`](https://huggingface.co/ZhitongGao/FlexAR-3B-T2I) | 1D ordered (256 tokens) | [`flextok_ar_3b_uncond.yaml`](../sot/configs/components/ar_priors/flextok/flextok_ar_3b_uncond.yaml) | [`flextok_wrapper.py`](../sot/sot/ar_priors/flextok_wrapper.py) |
+| `flextok_ar_113m` | FlexAR-113M | 113M | [`EPFL-VILAB/FlexAR-113M-T2I`](https://huggingface.co/EPFL-VILAB/FlexAR-113M-T2I) | 1D ordered (256 tokens) | [`flextok_ar_113m.yaml`](../sot/configs/components/ar_priors/flextok/flextok_ar_113m.yaml) | [`flextok_wrapper.py`](../sot/sot/ar_priors/flextok_wrapper.py) |
+| `flextok_ar_382m` | FlexAR-382M | 382M | [`EPFL-VILAB/FlexAR-382M-T2I`](https://huggingface.co/EPFL-VILAB/FlexAR-382M-T2I) | 1D ordered (256 tokens) | [`flextok_ar_382m.yaml`](../sot/configs/components/ar_priors/flextok/flextok_ar_382m.yaml) | [`flextok_wrapper.py`](../sot/sot/ar_priors/flextok_wrapper.py) |
+| `flextok_ar_1b` | FlexAR-1B | 1.15B | [`EPFL-VILAB/FlexAR-1B-T2I`](https://huggingface.co/EPFL-VILAB/FlexAR-1B-T2I) | 1D ordered (256 tokens) | [`flextok_ar_1b.yaml`](../sot/configs/components/ar_priors/flextok/flextok_ar_1b.yaml) | [`flextok_wrapper.py`](../sot/sot/ar_priors/flextok_wrapper.py) |
+| `flextok_ar_3b` | FlexAR-3B | 3.06B | [`EPFL-VILAB/FlexAR-3B-T2I`](https://huggingface.co/EPFL-VILAB/FlexAR-3B-T2I) | 1D ordered (256 tokens) | [`flextok_ar_3b.yaml`](../sot/configs/components/ar_priors/flextok/flextok_ar_3b.yaml) | [`flextok_wrapper.py`](../sot/sot/ar_priors/flextok_wrapper.py) |
+| `flextok_ar_3b` (uncond) | FlexAR-3B | 3.06B | [`EPFL-VILAB/FlexAR-3B-T2I`](https://huggingface.co/EPFL-VILAB/FlexAR-3B-T2I) | 1D ordered (256 tokens) | [`flextok_ar_3b_uncond.yaml`](../sot/configs/components/ar_priors/flextok/flextok_ar_3b_uncond.yaml) | [`flextok_wrapper.py`](../sot/sot/ar_priors/flextok_wrapper.py) |
 | `gridtok_ar_3b` | GridAR-3B | 3.06B | — | 2D grid (256 tokens) | [`gridtok_ar_3b.yaml`](../sot/configs/components/ar_priors/gridtok/gridtok_ar_3b.yaml) | [`flextok_wrapper.py`](../sot/sot/ar_priors/flextok_wrapper.py) |
 | `uniform` | — | — | — | 1D (random) | [`uniform.yaml`](../sot/configs/components/ar_priors/uniform.yaml) | [`uniform.py`](../sot/sot/ar_priors/uniform.py) |
 
@@ -45,7 +45,7 @@ Each AR model has a YAML config under `sot/configs/components/ar_priors/`. Examp
 ```yaml
 ar_prior:
   name: flextok_ar_3b
-  model_id: ZhitongGao/FlexAR-3B-T2I
+  model_id: EPFL-VILAB/FlexAR-3B-T2I
 
   generation_kwargs:
     replacement: false

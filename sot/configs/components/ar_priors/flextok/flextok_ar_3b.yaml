@@ -3,7 +3,7 @@
 
 ar_prior:
   name: flextok_ar_3b
-  model_id: ZhitongGao/FlexAR-3B-T2I
+  model_id: EPFL-VILAB/FlexAR-3B-T2I
   model_type: ar_text_to_image_model
   
   # --- AR model generation params (passed to generate_ids) ---
