@@ -15,10 +15,9 @@ For **standalone use** (image generation without the full SoT framework), see [`
 | `flextok_ar_1b` | FlexAR-1B | 1.15B | [`EPFL-VILAB/FlexAR-1B-T2I`](https://huggingface.co/EPFL-VILAB/FlexAR-1B-T2I) | 1D ordered (256 tokens) | [`flextok_ar_1b.yaml`](../sot/configs/components/ar_priors/flextok/flextok_ar_1b.yaml) | [`flextok_wrapper.py`](../sot/sot/ar_priors/flextok_wrapper.py) |
 | `flextok_ar_3b` | FlexAR-3B | 3.06B | [`EPFL-VILAB/FlexAR-3B-T2I`](https://huggingface.co/EPFL-VILAB/FlexAR-3B-T2I) | 1D ordered (256 tokens) | [`flextok_ar_3b.yaml`](../sot/configs/components/ar_priors/flextok/flextok_ar_3b.yaml) | [`flextok_wrapper.py`](../sot/sot/ar_priors/flextok_wrapper.py) |
 | `flextok_ar_3b` (uncond) | FlexAR-3B | 3.06B | [`EPFL-VILAB/FlexAR-3B-T2I`](https://huggingface.co/EPFL-VILAB/FlexAR-3B-T2I) | 1D ordered (256 tokens) | [`flextok_ar_3b_uncond.yaml`](../sot/configs/components/ar_priors/flextok/flextok_ar_3b_uncond.yaml) | [`flextok_wrapper.py`](../sot/sot/ar_priors/flextok_wrapper.py) |
-| `gridtok_ar_3b` | GridAR-3B | 3.06B | — | 2D grid (256 tokens) | [`gridtok_ar_3b.yaml`](../sot/configs/components/ar_priors/gridtok/gridtok_ar_3b.yaml) | [`flextok_wrapper.py`](../sot/sot/ar_priors/flextok_wrapper.py) |
+| `gridtok_ar_3b` | GridAR-3B | 3.06B | [`EPFL-VILAB/GridAR-3B-T2I`](https://huggingface.co/EPFL-VILAB/GridAR-3B-T2I) | 2D grid (256 tokens) | [`gridtok_ar_3b.yaml`](../sot/configs/components/ar_priors/gridtok/gridtok_ar_3b.yaml) | [`flextok_wrapper.py`](../sot/sot/ar_priors/flextok_wrapper.py) |
 | `uniform` | — | — | — | 1D (random) | [`uniform.yaml`](../sot/configs/components/ar_priors/uniform.yaml) | [`uniform.py`](../sot/sot/ar_priors/uniform.py) |
 
-> **Note:** Model weights are currently hosted under `ZhitongGao` on HuggingFace and will be moved to the [`EPFL-VILAB`](https://huggingface.co/EPFL-VILAB) organization upon public release.
 
 ## Extended AR Models
 

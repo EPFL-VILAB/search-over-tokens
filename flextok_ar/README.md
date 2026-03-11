@@ -111,7 +111,6 @@ model, tokenizer, cfg = load_model(
 
 FlexTok AR checkpoints are hosted on HuggingFace.
 
-> **Note:** Weights are currently under [`ZhitongGao`](https://huggingface.co/ZhitongGao) and will be moved to the [`EPFL-VILAB`](https://huggingface.co/EPFL-VILAB) organization upon public release.
 
 ### Text-to-Image (T2I)
 
