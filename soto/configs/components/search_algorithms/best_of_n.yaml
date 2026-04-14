@@ -1,0 +1,8 @@
+# Best-of-N search algorithm
+# Samples N complete sequences and returns best according to verifier
+
+search:
+  name: best_of_n
+  sample: true              # true = multinomial sampling for diverse sequences
+  n_samples: 50             # Number of complete sequences to generate
+  # decode_timesteps is controlled by ar_prior.decode_kwargs.timesteps

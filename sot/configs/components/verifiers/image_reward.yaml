@@ -1,4 +1,0 @@
-verifier:
-  name: image_reward
-  batch_size: 32
-

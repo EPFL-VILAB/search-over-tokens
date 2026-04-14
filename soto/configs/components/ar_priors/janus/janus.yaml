@@ -1,0 +1,11 @@
+# Janus AR model (1.3B) for Text-to-Image generation
+# Requires: pip install -e path/to/Janus
+
+ar_prior:
+  name: janus
+  model_version: deepseek-ai/Janus-1.3B
+  cfg_factor: 5.0
+  temperature: 1.0
+
+
+

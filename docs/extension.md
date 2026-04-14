@@ -8,8 +8,8 @@ Each new component requires only three steps:
 ## Adding a New AR Model
 
 ```python
-# sot/sot/ar_priors/my_model_wrapper.py
-from sot.ar_priors.base import BaseARPrior, ARPriorFactory
+# soto/soto/ar_priors/my_model_wrapper.py
+from soto.ar_priors.base import BaseARPrior, ARPriorFactory
 
 @ARPriorFactory.register("my_model")
 class MyModelARPrior(BaseARPrior):
@@ -49,7 +49,7 @@ class MyModelARPrior(BaseARPrior):
         return 256
 ```
 
-Add the import in `sot/sot/ar_priors/__init__.py` and create `sot/configs/components/ar_priors/my_model.yaml`:
+Add the import in `soto/soto/ar_priors/__init__.py` and create `soto/configs/components/ar_priors/my_model.yaml`:
 
 ```yaml
 ar_prior:
@@ -60,8 +60,8 @@ ar_prior:
 ## Adding a New Search Algorithm
 
 ```python
-# sot/sot/search_algorithms/mcts.py
-from sot.search_algorithms.base import BaseSearchAlgorithm, SearchAlgorithmFactory, SearchResult
+# soto/soto/search_algorithms/mcts.py
+from soto.search_algorithms.base import BaseSearchAlgorithm, SearchAlgorithmFactory, SearchResult
 
 @SearchAlgorithmFactory.register("mcts")
 class MCTSSearch(BaseSearchAlgorithm):
@@ -80,8 +80,8 @@ class MCTSSearch(BaseSearchAlgorithm):
 ## Adding a New Verifier
 
 ```python
-# sot/sot/verifiers/my_reward.py
-from sot.verifiers.base import BaseVerifier, VerifierFactory
+# soto/soto/verifiers/my_reward.py
+from soto.verifiers.base import BaseVerifier, VerifierFactory
 
 @VerifierFactory.register("my_reward")
 class MyRewardVerifier(BaseVerifier):

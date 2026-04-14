@@ -1,0 +1,23 @@
+# Lookahead beam search algorithm
+# Same as beam search but AR-completes partial sequences before decoding/scoring
+#
+# lookahead_number:     How many extra tokens to add. -1 = extend to end.
+# max_lookahead_step:   Stop doing lookahead at this step. -1 = always apply.
+#
+# Typical settings per model:
+#   Janus:    lookahead_number: -1, max_lookahead_step: -1   (always extend to end)
+#   FlexTok:  lookahead_number: 8,  max_lookahead_step: -1   (extend by 8 tokens)
+#   Infinity: lookahead_number: -1, max_lookahead_step: 8    (extend up to scale 8)
+
+search:
+  name: lookahead
+  beam_width: 5
+  max_steps: 9
+  sample: true                     # false = deterministic top-k branching; true = multinomial sampling
+  candidates_per_beam: 10           # Number of candidates to sample per beam
+  token_schedule: geometric          # Options: geometric, linear, fixed
+  geometric_base: 2.0               # For geometric schedule
+  tokens_per_step: -1               # For linear schedule
+  # decode_timesteps is controlled by ar_prior.decode_kwargs.timesteps
+  lookahead_number: -1              # Extra AR tokens (-1 = extend to end)
+  max_lookahead_step: -1            # Lookahead at all steps (-1 = always)

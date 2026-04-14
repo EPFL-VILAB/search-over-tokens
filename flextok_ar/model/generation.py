@@ -167,13 +167,13 @@ class ImageGenerationWrapper(nn.Module):
             Generated images, shape [B, C, H, W].
         """
         # Generate token IDs.
-        # float32 autocast matches the sot package's generate_ids call and avoids
+        # float32 autocast matches the soto package's generate_ids call and avoids
         # numerical issues with the AR transformer's attention operations.
         with torch.cuda.amp.autocast(enabled=True, dtype=torch.float32):
             generated_ids = self.generate_ids(data_dict, **kwargs)
 
         # Decode tokens to images.
-        # bfloat16 autocast matches the sot package's decode_tokens call and is
+        # bfloat16 autocast matches the soto package's decode_tokens call and is
         # required for FlexTok's compiled flex_attention backend to run correctly.
         image_tokenizer = self.get_image_tokenizer()
 

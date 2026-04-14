@@ -1,0 +1,16 @@
+# @package _global_
+
+# GenEval Beam Search with FlexTok d12 + ImageReward Verifier
+
+defaults:
+  - /eval/base
+  - /components/ar_priors/flextok/flextok_ar_113m
+  - /components/search_algorithms/beam_search
+  - /components/verifiers/image_reward
+
+search:
+  name: beam
+
+dataset:
+  name: geneval
+  dataset_dir: datasets/geneval

@@ -1,0 +1,13 @@
+# @package _global_
+
+# DreamBench Lookahead Search with Janus Pro + DreamSim Verifier
+
+defaults:
+  - /eval/base
+  - /components/ar_priors/janus/janus_pro
+  - /components/search_algorithms/janus/lookahead_janus
+  - /components/verifiers/dreamsim
+
+dataset:
+  name: dreambench
+  dataset_dir: datasets/dreambench

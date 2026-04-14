@@ -1,0 +1,23 @@
+# Default configuration for Search over Tokens
+# Override with: python scripts/run_search.py ar_prior=uniform search=best_of_n
+
+defaults:
+  - components/ar_priors/uniform
+  - components/search_algorithms/best_of_n
+  - components/verifiers/clip
+
+# Device
+device: cuda
+
+# Prompts to generate images for
+prompts:
+  - "A golden retriever playing in snow"
+  - "A cat sitting on a windowsill"
+  - "A beautiful sunset over mountains"
+
+# Number of results to return per prompt
+num_results: 1
+
+# Output directory (for script results - images, metadata, etc.)
+output_dir: results
+

@@ -1,9 +1,0 @@
-# PickScore verifier for human-preference-based text-image alignment
-# Uses a fine-tuned CLIP ViT-H/14 model trained on the Pick-a-Pic dataset.
-# Requires: transformers
-
-verifier:
-  name: pickscore
-  batch_size: 32
-
-

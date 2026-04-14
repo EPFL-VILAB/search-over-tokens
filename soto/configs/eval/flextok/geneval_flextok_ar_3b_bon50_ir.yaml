@@ -1,0 +1,25 @@
+# @package _global_
+
+# GenEval Best-of-50 with ImageReward Verifier
+#
+# Generates 50 complete sequences per prompt, scores with ImageReward,
+#
+# Usage:
+#   Single GPU:  python scripts/run_search.py --config-name eval/geneval_flextok_bon50_ir
+#   Multi-GPU:   torchrun --nproc-per-node=4 scripts/run_search.py --config-name eval/geneval_flextok_bon50_ir
+
+defaults:
+  - /eval/base
+  - /components/ar_priors/flextok/flextok_ar_3b
+  - /components/search_algorithms/best_of_n
+  - /components/verifiers/image_reward
+
+# Best-of-N override
+search:
+  name: best_of_n
+  n_samples: 50
+
+# Dataset configuration
+dataset:
+  name: geneval
+  dataset_dir: datasets/geneval

@@ -1,0 +1,26 @@
+# @package _global_
+
+# GenEval Lookahead Beam Search (LA=8) with Ensemble Verifier
+#
+# Beam search with 8-token lookahead AR completion, scored by an
+# ensemble of 6 reward models using rank-based aggregation.
+#
+# Usage:
+#   Single GPU:  python scripts/run_search.py --config-name eval/geneval_flextok_la8_ensemble
+#   Multi-GPU:   torchrun --nproc-per-node=4 scripts/run_search.py --config-name eval/geneval_flextok_la8_ensemble
+
+defaults:
+  - /eval/base
+  - /components/ar_priors/flextok/flextok_ar_3b
+  - /components/search_algorithms/lookahead_search
+  - /components/verifiers/ensemble
+
+# Search overrides
+search:
+  name: lookahead
+  lookahead_number: 8
+
+# Dataset configuration
+dataset:
+  name: geneval
+  dataset_dir: datasets/geneval

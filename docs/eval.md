@@ -7,38 +7,38 @@ All configuration is Hydra-based. Experiments are composed from three component 
 ### 1. Use pre-built eval configs (recommended)
 
 ```bash
-python sot/run_search.py --config-name eval/flextok/geneval_flextok_ar_3b_beam_ir
-python sot/run_search.py --config-name eval/flextok/geneval_flextok_ar_3b_bon50_ir
-python sot/run_search.py --config-name eval/flextok/geneval_flextok_ar_3b_la8_ir
-python sot/run_search.py --config-name eval/flextok/geneval_flextok_ar_3b_beam_ensemble
-python sot/run_search.py --config-name eval/janus/geneval_janus_pro_beam_ir
-python sot/run_search.py --config-name eval/infinity/geneval_infinity_beam_ir
+python soto/run_search.py --config-name eval/flextok/geneval_flextok_ar_3b_beam_ir
+python soto/run_search.py --config-name eval/flextok/geneval_flextok_ar_3b_bon50_ir
+python soto/run_search.py --config-name eval/flextok/geneval_flextok_ar_3b_la8_ir
+python soto/run_search.py --config-name eval/flextok/geneval_flextok_ar_3b_beam_ensemble
+python soto/run_search.py --config-name eval/janus/geneval_janus_pro_beam_ir
+python soto/run_search.py --config-name eval/infinity/geneval_infinity_beam_ir
 ```
 
 ### 2. Override on the command line
 
 ```bash
 # Change the verifier
-python sot/run_search.py --config-name eval/flextok/geneval_flextok_ar_3b_beam_ir \
+python soto/run_search.py --config-name eval/flextok/geneval_flextok_ar_3b_beam_ir \
     verifier=ensemble
 
 # Change search parameters
-python sot/run_search.py --config-name eval/flextok/geneval_flextok_ar_3b_beam_ir \
+python soto/run_search.py --config-name eval/flextok/geneval_flextok_ar_3b_beam_ir \
     search.beam_width=10 search.max_steps=12
 
 # Limit dataset size for testing
-python sot/run_search.py --config-name eval/flextok/geneval_flextok_ar_3b_beam_ir \
+python soto/run_search.py --config-name eval/flextok/geneval_flextok_ar_3b_beam_ir \
     dataset.num_samples=10
 
 # Use custom prompts instead of a dataset
-python sot/run_search.py --config-name eval/flextok/geneval_flextok_ar_3b_beam_ir \
+python soto/run_search.py --config-name eval/flextok/geneval_flextok_ar_3b_beam_ir \
     prompts='["A painting of a mountain lake at sunset"]'
 ```
 
 ### 3. Write your own eval config
 
 ```yaml
-# sot/configs/eval/my_experiment.yaml
+# soto/configs/eval/my_experiment.yaml
 # @package _global_
 
 defaults:
@@ -65,7 +65,7 @@ num_results: 1
 ```
 
 ```bash
-python sot/run_search.py --config-name eval/my_experiment
+python soto/run_search.py --config-name eval/my_experiment
 ```
 
 ## Datasets
@@ -81,6 +81,6 @@ All datasets auto-download on first use:
 Or use custom prompts directly:
 
 ```bash
-python sot/run_search.py --config-name eval/flextok/geneval_flextok_ar_3b_beam_ir \
+python soto/run_search.py --config-name eval/flextok/geneval_flextok_ar_3b_beam_ir \
     prompts='["your prompt here"]'
 ```

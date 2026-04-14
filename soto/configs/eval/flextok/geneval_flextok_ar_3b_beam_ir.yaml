@@ -1,0 +1,27 @@
+# @package _global_
+
+# GenEval Beam Search with ImageReward Verifier
+#
+# This experiment configuration tests beam search on the GenEval dataset
+# using ImageReward for scoring text-image alignment.
+#
+# Usage:
+#   Single GPU:  python scripts/run_search.py --config-name eval/geneval_beam_ir
+#   Multi-GPU:   torchrun --nproc-per-node=4 scripts/run_search.py --config-name eval/geneval_beam_ir
+
+defaults:
+  - /eval/base
+  - /components/ar_priors/flextok/flextok_ar_3b
+  - /components/search_algorithms/beam_search
+  - /components/verifiers/image_reward
+
+# Search overrides
+search:
+  name: beam
+
+# Dataset configuration
+# GenEval data will be auto-downloaded from GitHub if not present
+dataset:
+  name: geneval
+  dataset_dir: datasets/geneval
+  # num_samples: 10  # Uncomment to limit samples for testing

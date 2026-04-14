@@ -3,12 +3,12 @@ requires = ["setuptools>=61", "packaging>=24.2"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "sot"
+name = "soto"
 version = "0.1.0"
 description = "(1D) Ordered Tokens Enable Efficient Test-Time Search"
 requires-python = ">=3.10"
 readme = {file = "README.md", content-type = "text/markdown"}
-license = {file = "sot/LICENSE"}
+license = {file = "soto/LICENSE"}
 dependencies = [
     # ── PyTorch ────────────────────────────────────────────────────────────
     "torch>=2.5.0",
@@ -67,16 +67,16 @@ demo = [
 ]
 
 [project.urls]
-"Homepage" = "https://sot.epfl.ch"
+"Homepage" = "https://soto.epfl.ch"
 
 [tool.setuptools.packages.find]
-where = ["sot", "flextok_ar"]
-include = ["sot*", "data*", "utils*", "flextok_ar*"]
+where = ["soto", "flextok_ar"]
+include = ["soto*", "data*", "utils*", "flextok_ar*"]
 
 [tool.setuptools.package-dir]
-"sot" = "sot/sot"
-"data" = "sot/data"
-"sot.utils" = "sot/utils"
+"soto" = "soto/soto"
+"data" = "soto/data"
+"soto.utils" = "soto/utils"
 "flextok_ar" = "flextok_ar"
 
 [tool.setuptools]

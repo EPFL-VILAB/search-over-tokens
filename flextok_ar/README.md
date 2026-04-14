@@ -2,7 +2,7 @@
 
 This repository provides inference code and a model zoo for running text-to-image and class-to-image autoregressive models trained with the [FlexTok](https://github.com/apple/ml-flextok) tokenizer. In this repository, we refer to these models as FlexTok AR or FlexAR for short. This model family serves as the primary backbone in our test-time search experiments.
 
-This repository is built on [FlexTok](https://github.com/apple/ml-flextok) tokenizer and the [L3M](https://github.com/apple/ml-l3m) framework. It can be used **standalone** (image generation only) or as part of the full [SoT framework](../README.md) (test-time search).
+This repository is built on [FlexTok](https://github.com/apple/ml-flextok) tokenizer and the [L3M](https://github.com/apple/ml-l3m) framework. It can be used **standalone** (image generation only) or as part of the full [SoTo framework](../README.md) (test-time search).
 
 ![FlexTok AR coarse-to-fine generation](../assets/flextok_ar.png)
 >  Image generation examples with varying numbers of tokens from the FlexTok AR model. Figure from [FlexTok Paper](https://arxiv.org/pdf/2502.13967).
@@ -33,9 +33,9 @@ pip install -e .
 
 This automatically installs [FlexTok](https://github.com/apple/ml-flextok), [L3M](https://github.com/apple/ml-l3m), PyTorch, and other required dependencies.
 
-### As part of SoT
+### As part of SoTo
 
-See the [main README](../README.md#installation) for the full SoT installation.
+See the [main README](../README.md#installation) for the full SoTo installation.
 
 ---
 

@@ -1,15 +1,15 @@
 # Search Algorithms
 
-`SoT` provides three search strategies, all implementing the `BaseSearchAlgorithm` interface. Each is registered by name and configured via YAML.
+`SoTo` provides three search strategies, all implementing the `BaseSearchAlgorithm` interface. Each is registered by name and configured via YAML.
 
 ## Best-of-N (`best_of_n`)
 
-**Implementation:** [`best_of_n.py`](../sot/sot/search_algorithms/best_of_n.py) | **Config:** [`best_of_n.yaml`](../sot/configs/components/search_algorithms/best_of_n.yaml)
+**Implementation:** [`best_of_n.py`](../soto/soto/search_algorithms/best_of_n.py) | **Config:** [`best_of_n.yaml`](../soto/configs/components/search_algorithms/best_of_n.yaml)
 
 The simplest strategy: generate N complete sequences, score all, return the best.
 
 ```yaml
-# sot/configs/components/search_algorithms/best_of_n.yaml
+# soto/configs/components/search_algorithms/best_of_n.yaml
 search:
   name: best_of_n
   n_samples: 50              # Number of full sequences to generate
@@ -17,17 +17,17 @@ search:
 ```
 
 ```bash
-python sot/run_search.py --config-name eval/flextok/geneval_flextok_ar_3b_bon50_ir
+python soto/run_search.py --config-name eval/flextok/geneval_flextok_ar_3b_bon50_ir
 ```
 
 ## Beam Search (`beam`)
 
-**Implementation:** [`beam_search.py`](../sot/sot/search_algorithms/beam_search.py) | **Config:** [`beam_search.yaml`](../sot/configs/components/search_algorithms/beam_search.yaml)
+**Implementation:** [`beam_search.py`](../soto/soto/search_algorithms/beam_search.py) | **Config:** [`beam_search.yaml`](../soto/configs/components/search_algorithms/beam_search.yaml)
 
 Incrementally generates tokens while maintaining the top-K candidates at each step. The token schedule controls how many tokens are added per step.
 
 ```yaml
-# sot/configs/components/search_algorithms/beam_search.yaml
+# soto/configs/components/search_algorithms/beam_search.yaml
 search:
   name: beam
   beam_width: 5              # Number of beams to keep
@@ -44,23 +44,23 @@ search:
 
 ```bash
 # FlexTok beam search (geometric schedule)
-python sot/run_search.py --config-name eval/flextok/geneval_flextok_ar_3b_beam_ir
+python soto/run_search.py --config-name eval/flextok/geneval_flextok_ar_3b_beam_ir
 
 # Janus Pro beam search (linear schedule)
-python sot/run_search.py --config-name eval/janus/geneval_janus_pro_beam_ir
+python soto/run_search.py --config-name eval/janus/geneval_janus_pro_beam_ir
 
 # Infinity beam search (scale-indexed schedule)
-python sot/run_search.py --config-name eval/infinity/geneval_infinity_beam_ir
+python soto/run_search.py --config-name eval/infinity/geneval_infinity_beam_ir
 ```
 
 ## Lookahead Beam Search (`lookahead`)
 
-**Implementation:** [`lookahead_search.py`](../sot/sot/search_algorithms/lookahead_search.py) | **Config:** [`lookahead_search.yaml`](../sot/configs/components/search_algorithms/lookahead_search.yaml)
+**Implementation:** [`lookahead_search.py`](../soto/soto/search_algorithms/lookahead_search.py) | **Config:** [`lookahead_search.yaml`](../soto/configs/components/search_algorithms/lookahead_search.yaml)
 
 Same as beam search, but before scoring, partial token sequences are AR-completed to give the decoder more context. Only the original (non-extended) tokens are kept in the beam.
 
 ```yaml
-# sot/configs/components/search_algorithms/lookahead_search.yaml
+# soto/configs/components/search_algorithms/lookahead_search.yaml
 search:
   name: lookahead
   beam_width: 5
@@ -77,5 +77,5 @@ search:
 - Infinity: `lookahead_number: -1, max_lookahead_step: 8` — complete for early scales only
 
 ```bash
-python sot/run_search.py --config-name eval/flextok/geneval_flextok_ar_3b_la8_ir
+python soto/run_search.py --config-name eval/flextok/geneval_flextok_ar_3b_la8_ir
 ```

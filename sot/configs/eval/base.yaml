@@ -1,7 +1,0 @@
-# Shared runtime defaults for all eval configs.
-# Add "- base" to the defaults list of any eval config to inherit these.
-
-seed: 0
-output_dir: results
-resume: true        # Resume from checkpoint if interrupted
-num_results: 1      # Number of final results to save per prompt

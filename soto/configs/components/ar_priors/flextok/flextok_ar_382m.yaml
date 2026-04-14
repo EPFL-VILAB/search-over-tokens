@@ -1,0 +1,18 @@
+# FlexTok AR d18 model for Text-to-Image generation
+# Medium model: 18 blocks, embed_dim=1152
+
+ar_prior:
+  name: flextok_ar_382m
+  model_id: EPFL-VILAB/FlexAR-382M-T2I
+  model_type: ar_text_to_image_model
+  
+  generation_kwargs:
+    replacement: false
+    return_probs: true
+
+  decode_kwargs:
+    timesteps: 20
+    guidance_scale: 7.5
+    perform_norm_guidance: true
+    use_same_noise_per_prompt: true
+
