@@ -1,5 +1,5 @@
 # 🧩 Search over Tokens (`SoTo`)
-[`Website`](https://soto.epfl.ch) | [`arXiv (comming soon)`](https://soto.epfl.ch) | [`🤗 Demo (coming soon)`](https://soto.epfl.ch) | [`BibTeX`](#citation)
+[🌐 Website](https://soto.epfl.ch) | [📄 arXiv](https://arxiv.org/abs/2604.15453) | [🤗 Models](https://huggingface.co/collections/EPFL-VILAB/ar-models-with-flextok) | [📚 BibTeX](#citation)
 
 `SoTo` is a framework for **test-time search in autoregressive (AR) image generation**, decoupling [AR priors](#ar-priors), [search algorithms](#search-algorithms), and [verifiers](#verifiers) for flexible composition via simple YAML configs.
 
@@ -11,7 +11,7 @@ This is the official implementation of:
 *[Zhitong Gao](https://gaozhitong.github.io/), [Parham Rezaei](https://rezaei-parham.github.io/), [Ali Cy](https://www.ali.cy/), [Mingqiao Ye](https://ymq2017.github.io/), [Nataša Jovanović](https://people.epfl.ch/natasa.jovanovic?lang=en), [Jesse Allardice](https://github.com/JesseAllardice), [Afshin Dehghan](https://scholar.google.com/citations?user=wcX-UW4AAAAJ), [Amir Zamir](https://vilab.epfl.ch/zamir/), [Roman Bachmann](https://roman-bachmann.github.io/), [Oğuzhan Fatih Kar](https://ofkar.github.io/)* <br>
 <sup>EPFL &nbsp;&nbsp;&nbsp; Apple</sup>
 
-![SoTo pull figure](./assets/pull_figure.png)
+![SoTo pull figure](https://storage.googleapis.com/sot_site/images/pull_figure.png)
 
 > TL;DR: We find that 1D ordered tokens (e.g., [FlexTok](https://github.com/apple/ml-flextok)) provide a coarse-to-fine structure with semantically interpretable intermediate readouts, enabling more efficient test-time scaling than classical 2D grid tokenizers. We further show that this structure enables training-free text-to-image generation via pure token search, and systematically study the roles of different search algorithms, verifiers, and AR priors.
 
