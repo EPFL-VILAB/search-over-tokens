@@ -10,7 +10,7 @@ from pathlib import Path
 import torch
 from PIL import Image
 
-_DEFAULT_CONFIG_DIR = Path(__file__).parent.parent.parent / "configs" / "components" / "verifiers"
+_DEFAULT_CONFIG_DIR = Path(__file__).parent.parent / "configs" / "components" / "verifiers"
 
 __all__ = ["BaseVerifier", "VerifierFactory"]
 

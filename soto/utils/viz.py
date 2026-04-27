@@ -160,7 +160,7 @@ def show_images(
     if main_title:
         fig.suptitle(main_title, fontsize=12, fontweight="bold", y=1.01)
 
-    plt.tight_layout()
+    plt.tight_layout(h_pad=2.0, w_pad=0.8)
     if save_path:
         plt.savefig(save_path, bbox_inches="tight", dpi=150)
     plt.show()
@@ -253,6 +253,7 @@ def show_search_tree(
     gap_y: float = 0.55,
     start_gap: float = 0.3,
     save_path: str = None,
+    row_labels=None,
 ):
     """Visualise a multi-step beam search as a top-to-bottom tree.
 
@@ -307,9 +308,10 @@ def show_search_tree(
         prev_slots = step_slots[s - 1]
         child_of   = {}
         for col_dst in range(n_show):
-            prefix = curr.display_tokens[col_dst][:-1]
             for col_src in surv_cols:
-                if torch.equal(prev.display_tokens[col_src], prefix):
+                parent = prev.display_tokens[col_src]
+                prefix = curr.display_tokens[col_dst][: parent.shape[0]]
+                if torch.equal(parent, prefix):
                     child_of[col_dst] = col_src
                     break
         sorted_cols = sorted(range(n_show),
@@ -351,7 +353,7 @@ def show_search_tree(
                 continue
             tok_src = all_results[s].display_tokens[col_src]
             for col_dst in range(n_show):
-                prefix = all_results[s + 1].display_tokens[col_dst][:-1]
+                prefix = all_results[s + 1].display_tokens[col_dst][: tok_src.shape[0]]
                 if torch.equal(prefix, tok_src):
                     x0 = col_x(step_slots[s][col_src])     + img / 2
                     y0 = step_y(s)
@@ -384,10 +386,12 @@ def show_search_tree(
         ))
 
     # ── Row labels ────────────────────────────────────────────────────────────
-    suffixes = ["st", "nd", "rd"] + ["th"] * (n_steps - 3)
+    if row_labels is None:
+        row_labels = [f"Step {s + 1}" for s in range(n_steps)]
     for s in range(n_steps):
+        label = row_labels[s] if s < len(row_labels) else f"Step {s + 1}"
         fig.text(fx(ML - 0.12), fy(step_y(s) + img / 2),
-                 f"{s + 1}{suffixes[s]} token",
+                 label,
                  ha="right", va="center", fontsize=8.5, fontweight="bold", color="#222")
 
     # ── Prompt ────────────────────────────────────────────────────────────────

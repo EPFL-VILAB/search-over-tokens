@@ -59,9 +59,43 @@ conda create -n soto python=3.10 -y
 conda activate soto
 
 pip install -e .
+# Install ImageReward without its pinned transitive deps.
+# This keeps the env compatible with FlexTok/L3M.
 pip install image-reward --no-deps
-pip install -e ./flextok_ar
 ```
+
+Optional for notebooks:
+
+```bash
+pip install ipykernel
+python -m ipykernel install --user --name soto --display-name "SoTo (soto)"
+```
+
+Default install includes:
+- FlexTok-based AR generation (`flextok`, `l3m`, and the bundled `flextok_ar` Python package exposed by this repo)
+- Default verifier stack: CLIP, ImageReward, DreamSim, and imscore-based verifiers
+- Core SoTo search framework dependencies
+
+Other options:
+
+```bash
+# Spatial verifier stack (GroundingDINO + SAM related deps; slower/heavier install)
+pip install -e '.[spatial]'
+
+# Janus support
+pip install -e '.[janus]'
+
+# Infinity support
+pip install -e '.[infinity]'
+```
+
+If you want every optional backend, install the default stack first and then:
+
+```bash
+pip install -e '.[all]'
+```
+
+If you only want the standalone FlexTok AR package, use [`flextok_ar/README.md`](flextok_ar/README.md)。
 
 ---
 
@@ -130,12 +164,11 @@ This repository consists of two main components: (1) FlexTok Autoregressive (AR)
 ```
 ├── flextok_ar/                 # FlexTok AR package (standalone installable)
 ├── soto/
-│   ├── soto/
-│   │   ├── ar_priors/          # AR model wrappers
-│   │   ├── search_algorithms/  # Search strategies
-│   │   ├── verifiers/          # Verifiers
-│   │   ├── data/               # Dataset loaders (auto-download)
-│   │   └── utils/
+│   ├── ar_priors/              # AR model wrappers
+│   ├── search_algorithms/      # Search strategies
+│   ├── verifiers/              # Verifiers
+│   ├── data/                   # Dataset loaders (auto-download)
+│   ├── utils/
 │   ├── configs/
 │   │   ├── components/         # Default configs for each AR model, algorithm, and verifier
 │   │   │   ├── ar_priors/

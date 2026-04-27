@@ -86,16 +86,13 @@ class UniformPrior(FlexTokARPrior):
         # [batch, seq_len] -> [batch * num_samples, seq_len]
         expanded = current_tokens.repeat_interleave(num_samples, dim=0)
 
-        # Draw random new tokens — use an explicit Generator tied to self.device
-        # so the seed works correctly regardless of which GPU is the current device
-        # (torch.cuda.manual_seed only seeds cuda:0 by default, not e.g. cuda:2)
-        seed = kwargs.get("seed", 0)
-        generator = torch.Generator(device=self.device).manual_seed(seed)
+        # Use the prior's internal RNG so repeated calls advance deterministically
+        # after set_seed(), matching the contract used by other AR priors.
         new_tokens = torch.randint(
             0, self.vocab_size,
             (total_samples, num_new_tokens),
             device=self.device,
-            generator=generator
+            generator=self.rng,
         )
 
         # Concatenate to form full sequences

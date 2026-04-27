@@ -12,7 +12,7 @@ import torch
 
 logger = logging.getLogger("soto.search_algorithms")
 
-_DEFAULT_CONFIG_DIR = Path(__file__).parent.parent.parent / "configs" / "components" / "search_algorithms"
+_DEFAULT_CONFIG_DIR = Path(__file__).parent.parent / "configs" / "components" / "search_algorithms"
 
 __all__ = ["SearchResult", "BaseSearchAlgorithm", "SearchAlgorithmFactory"]
 

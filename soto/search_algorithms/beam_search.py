@@ -67,7 +67,7 @@ class BeamSearch(BaseSearchAlgorithm):
         Returns:
             SearchResult with top-scored sequences
         """
-        from utils import save_checkpoint, load_checkpoint
+        from soto.utils import save_checkpoint, load_checkpoint
 
         if seed is not None:
             self.ar_prior.set_seed(seed)

@@ -25,10 +25,6 @@ try:
     JANUS_AVAILABLE = True
 except ImportError:
     JANUS_AVAILABLE = False
-    logger.warning(
-        "Janus not available. Install it first: "
-        "pip install -e path/to/Janus"
-    )
 
 __all__ = ["JanusARPrior", "JanusProARPrior"]
 
@@ -56,7 +52,7 @@ class JanusARPrior(BaseARPrior):
 
     def __init__(self, config: Dict, device: str = "cuda"):
         if not JANUS_AVAILABLE:
-            raise ImportError("Janus package not found. Install it first.")
+            raise ImportError("Janus package not found. Install the optional Janus backend with `pip install -e ' .[janus]'`.")
 
         super().__init__(config, device)
 

@@ -18,7 +18,7 @@ from pathlib import Path
 from soto.ar_priors.base import BaseARPrior, ARPriorFactory
 
 # Default config directory: soto/configs/components/ar_priors/
-_DEFAULT_CONFIG_DIR = Path(__file__).parent.parent.parent / "configs" / "components" / "ar_priors"
+_DEFAULT_CONFIG_DIR = Path(__file__).parent.parent / "configs" / "components" / "ar_priors"
 
 logger = logging.getLogger("soto.flextok")
 
@@ -28,7 +28,6 @@ try:
     FLEXTOK_AR_AVAILABLE = True
 except ImportError:
     FLEXTOK_AR_AVAILABLE = False
-    print("Warning: flextok-ar not available. Install it first: pip install -e ./flextok_ar")
 
 from flextok.utils.demo import batch_to_pil
 
@@ -62,7 +61,7 @@ class FlexTokARPrior(BaseARPrior):
     
     def __init__(self, config: Dict, device: str = "cuda"):
         if not FLEXTOK_AR_AVAILABLE:
-            raise ImportError("flextok-ar package not found. Install it first.")
+            raise ImportError("flextok-ar package not found. Install the default SoTo dependencies with `pip install -e .`.")
         
         super().__init__(config, device)
         

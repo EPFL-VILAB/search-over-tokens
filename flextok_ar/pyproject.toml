@@ -12,33 +12,32 @@ dependencies = [
     # Core dependencies
     "flextok @ git+https://github.com/apple/ml-flextok.git",
     "l3m @ git+https://github.com/apple/ml-l3m.git",
-    
-    # Note: torch and torchvision are not listed here to avoid conflicts
-    # with custom builds (e.g., NVIDIA builds). They should be installed
-    # separately or will be pulled in by flextok dependency.
-    # Minimum required: torch>=2.5.0, torchvision>=0.20.0
-    
+    # PyTorch bounds are pinned here so a clean pip install does not pull
+    # a newer CUDA stack than the supported driver. If you already have a
+    # compatible custom build installed, pip will typically reuse it.
+    "torch>=2.5.0,<2.11",
+    "torchvision>=0.20.0,<0.26",
+
     # Configuration and utilities
     "hydra-core>=1.3.0",
     "omegaconf>=2.3.0",
     "fvcore>=0.1.5",
-    
+
     # Array and image processing
     "numpy>=1.24.0",
     "pillow>=10.0.0",
     "einops>=0.7.0",
-    
+
     # Model loading and serialization
     "safetensors>=0.4.0",
     "huggingface_hub>=0.20.0",
-    
+
     # Text encoder (for T2I)
-    "transformers>=4.30.0",
+    "transformers>=4.38.0,<4.56",
     "sentencepiece>=0.1.99",
-    "accelerate>=0.20.0",
+    "accelerate>=0.16.0",
 ]
 
 [tool.setuptools.packages.find]
 where = [".."]
 include = ["flextok_ar*"]
-

@@ -31,6 +31,13 @@ cd flextok_ar
 pip install -e .
 ```
 
+Optional for notebooks:
+
+```bash
+pip install ipykernel
+python -m ipykernel install --user --name flextok_ar --display-name "FlexTok AR (flextok_ar)"
+```
+
 This automatically installs [FlexTok](https://github.com/apple/ml-flextok), [L3M](https://github.com/apple/ml-l3m), PyTorch, and other required dependencies.
 
 ### As part of SoTo
@@ -74,7 +81,7 @@ python generate.py --mode c2i \
 
 ### Jupyter Notebook
 
-See [`flextok_ar_inference.ipynb`](flextok_ar_inference.ipynb) for interactive examples covering text-to-image and class-to-image generation.
+See [`flextok_ar_inference.ipynb`](flextok_ar_inference.ipynb) for interactive examples covering text-to-image and class-to-image generation. If the kernel does not appear in Jupyter, run the optional `ipykernel` setup from the installation section above.
 
 ### Python API
 

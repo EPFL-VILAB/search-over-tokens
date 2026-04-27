@@ -21,11 +21,10 @@ from soto.ar_priors.base import ARPriorFactory
 from soto.search_algorithms.base import SearchAlgorithmFactory
 from soto.verifiers.base import VerifierFactory
 
-from data.geneval import load_geneval_captions
-from data.dreambench import load_dreambench_captions
-from data.coco import load_coco_captions
-from data.dpg import load_dpg_captions
-from utils import is_distributed, get_rank_info, set_seed, is_caption_complete, setup_logging
+from soto.data.geneval import load_geneval_captions
+from soto.data.dreambench import load_dreambench_captions
+from soto.data.coco import load_coco_captions
+from soto.utils import is_distributed, get_rank_info, set_seed, is_caption_complete, setup_logging
 
 
 @hydra.main(version_base=None, config_path="configs", config_name="default")
@@ -85,15 +84,8 @@ def main(cfg: DictConfig):
             num_samples=cfg.dataset.get("num_samples", 300)
         )
         all_metadata = [None] * len(all_captions)
-    elif dataset_name == "dpg":
-        # Load DPG-Bench captions
-        all_captions = load_dpg_captions(
-            dataset_dir=cfg.dataset.get("dataset_dir", "datasets/dpg"),
-            num_samples=cfg.dataset.get("num_samples", None)
-        )
-        all_metadata = [None] * len(all_captions)
     elif dataset_name is not None:
-        raise ValueError(f"Unknown dataset: '{dataset_name}'. Available: geneval, dreambench, coco, dpg")
+        raise ValueError(f"Unknown dataset: '{dataset_name}'. Available: geneval, dreambench, coco")
     else:
         all_captions = None
         all_metadata = None
