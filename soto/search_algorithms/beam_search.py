@@ -102,7 +102,7 @@ class BeamSearch(BaseSearchAlgorithm):
             decode_batch_size=decode_batch_size,
             caption_idx=kwargs.get("caption_idx", 0),
         )
-        step_images, step_scores = [], []
+        step_images, step_scores, step_results = [], [], []
         last_candidates = current_tokens
         last_scores = torch.zeros(1, device=self.ar_prior.device)
 
@@ -147,6 +147,21 @@ class BeamSearch(BaseSearchAlgorithm):
 
             step_images.append(images[top_k_idx[0]])
             step_scores.append(beam_scores[0].item())
+
+            n_show_step = min(num_results, len(scores))
+            show_idx_step = scores.topk(n_show_step).indices
+            step_results.append(SearchResult(
+                tokens=current_tokens.clone(),
+                images=[images[i] for i in show_idx_step.tolist()],
+                scores=scores[show_idx_step].clone(),
+                display_tokens=candidates[show_idx_step].clone(),
+                metadata={
+                    "algorithm": "beam_search_step",
+                    "step_index": step,
+                    "token_count": int(candidates.shape[1]),
+                },
+            ))
+
             bar.set_postfix(score=f"{beam_scores[0]:.3f}", tokens=current_tokens[0].size(0))
 
             if output_dir:
@@ -197,6 +212,7 @@ class BeamSearch(BaseSearchAlgorithm):
             },
             step_images=step_images,
             step_scores=step_scores,
+            step_results=step_results,
         )
 
     # ------------------------------------------------------------------

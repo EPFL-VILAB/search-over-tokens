@@ -27,6 +27,7 @@ class SearchResult:
         metadata: Additional information about the search
         step_images: Best image at each search step (None if not collected)
         step_scores: Best verifier score at each search step (None if not collected)
+        step_results: Per-step candidate snapshots for visualization (None if not collected)
     """
 
     def __init__(
@@ -38,6 +39,7 @@ class SearchResult:
         step_images: List = None,
         step_scores: List = None,
         display_tokens: torch.Tensor = None,
+        step_results: List = None,
     ):
         self.tokens = tokens
         self.images = images
@@ -46,6 +48,7 @@ class SearchResult:
         self.step_images = step_images  # List[PIL Image], one per step
         self.step_scores = step_scores  # List[float], one per step
         self.display_tokens = display_tokens  # token seqs for all displayed images [num_results, seq_len]
+        self.step_results = step_results  # List[SearchResult], one per search step
 
 
 class BaseSearchAlgorithm(ABC):
