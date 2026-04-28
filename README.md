@@ -1,5 +1,5 @@
 # 🧩 Search over Tokens (`SoTo`)
-[🌐 Website](https://soto.epfl.ch) | [📄 arXiv](https://arxiv.org/abs/2604.15453) | [🤗 Models](https://huggingface.co/collections/EPFL-VILAB/ar-models-with-flextok) | [📚 BibTeX](#citation)
+[🌐 Website](https://soto.epfl.ch) | [📄 arXiv](https://arxiv.org/abs/2604.15453) | [🤗 Models](https://huggingface.co/collections/EPFL-VILAB/ar-models-with-flextok) ｜[🚀 Demo](https://huggingface.co/spaces/EPFL-VILAB/search-over-tokens) | [📚 BibTeX](#citation)
 
 `SoTo` is a framework for **test-time search in autoregressive (AR) image generation**, decoupling [AR priors](#ar-priors), [search algorithms](#search-algorithms), and [verifiers](#verifiers) for flexible composition via simple YAML configs.
 
@@ -253,16 +253,6 @@ See [docs/verifiers.md](docs/verifiers.md) for ensemble configuration and all ve
 ---
 
 ### Running Experiments
-
-All configuration is Hydra-based. Experiments compose an AR prior, search algorithm, verifier, and dataset from YAML configs.
-
-```bash
-bash soto/scripts/run.sh              # FlexTok beam search on GenEval (single GPU)
-bash soto/scripts/run_ddp.sh 4        # Same, 4 GPUs
-bash soto/scripts/run_bon.sh          # Best-of-50
-bash soto/scripts/run_janus_pro.sh    # Janus Pro
-bash soto/scripts/run_infinity.sh     # Infinity
-```
 
 See [docs/eval.md](docs/eval.md) for CLI overrides, custom eval configs, and dataset details.
 
